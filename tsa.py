@@ -15,7 +15,7 @@ import os
 import nltk
 import pycountry
 import string
-from textblobk import Textblob
+from textblob import TextBlob
 from tweepy import OAuthHandler #authentication
 
 #authenticate
@@ -34,11 +34,49 @@ negative = 0
 neutral = 0
 searchword = input("Enter hashtag or keyword for search: ")
 numTweets = int(input("How many tweets would you like to analyze?: "))
-tweets = tweepy.Cursor(api.search,q=keyword).items(numTweets)
+tweets = tweepy.Cursor(api.search,q=searchword).items(numTweets)
 tweet_lis = []
 pos_lis = []
 neg_lis = []
 neutral_lis = []
+polarity = 0
+def percent(numer,denom):
+    return 100*float(numer)/float(denom)
 for tweet in tweets:
     print(tweet.text) #prints tweet text
     tweet_lis.append(tweet.text)
+
+    anal = TextBlob(tweet.text)#analysis part
+    polscore = SentimentIntesityAnalyzer().polarity_scores(tweet.text)
+    neut = polscore["neu"]
+    pos = polscore["pos"]
+    nega = polscore["neg"]
+    c = score['compound']
+    polarity = polarity + anal.sentiment.polarity
+
+    if nega > pos:
+        neg_lis.append(tweet.text)
+        negative=negative+1
+    elif pos > nega:
+        pos_lis.append(tweet.text)
+        positive=positive+1
+    elif nega == pos:
+        neutral_lis.append(tweet.text)
+        neutral=neutral+1
+positive = percentage(positive,numTweets)
+neutral = percentage(neutral,numTweets)
+negative = percentage(negative,numTweets)
+polarity = percentage(polarity,numTweets)
+
+#total, pos, neg, neutral
+tweet_lis = pd.DataFrame(tweet_lis)
+neg_lis = pd.DataFrame(neg_lis)
+neutral_lis = pd.DataFrame(neutral_lis)
+pos_lis = pd.DataFrame(pos_lis)
+
+#printing
+print("Total tweets: ",len(tweet_lis))
+print("Positive tweets: ",len(pos_lis))
+print("Neutral tweets: ",len(neutral_lis))
+print("Negative tweets: ",len(neg_lis))
+
