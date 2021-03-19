@@ -19,10 +19,10 @@ from textblob import TextBlob
 from tweepy import OAuthHandler #authentication
 
 #authenticate
-apiKey = ""
-apiSecret = ""
-accessToken = ""
-accessSecret = ""
+apiKey = "krqTvCVlFX1Fs3lMJWvSZrxEq"
+apiSecret = "GZsAnHmAhg7bWOGRq6KD7U2vX1ISP1QuigkBLR5ov5u2Bh21y7"
+accessToken = "1357400772527415297-3gpsEPuSKCy7uMvDI66pvKlgciWOIh"
+accessSecret = "qgOFFVopVZ8u4f0b9jplK4ucRZwEieqc3z4qR3EeyF0Wr"
 
 authen = tweepy.OAuthHandler(apiKey, apiSecret)
 authen.set_access_token(accessToken, accessSecret)
@@ -40,6 +40,8 @@ pos_lis = []
 neg_lis = []
 neutral_lis = []
 polarity = 0
+
+
 def percent(numer,denom):
     return 100*float(numer)/float(denom)
 for tweet in tweets:
