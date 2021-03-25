@@ -4,10 +4,7 @@ import tweepy
 
 
 #authenticate
-apiKey = "57vHkCcIAdYxWlmIip5qka1TN"
-apiSecret = "wUsJSMu7L273MtWVXbXRw0ZYndkEAGeLcd9FOf3BVlG0WnXLf7"
-accessToken = "1357400772527415297-3gpsEPuSKCy7uMvDI66pvKlgciWOIh"
-accessSecret = "qgOFFVopVZ8u4f0b9jplK4ucRZwEieqc3z4qR3EeyF0Wr"
+
 
 authen = tweepy.OAuthHandler(apiKey, apiSecret)
 authen.set_access_token(accessToken, accessSecret)
