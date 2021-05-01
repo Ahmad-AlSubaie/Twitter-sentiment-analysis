@@ -20,10 +20,10 @@ from tweepy import OAuthHandler #authentication
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 #authenticate
-apiKey =
-apiSecret =
-accessToken =
-accessSecret =
+apiKey ="BPwGcR04NbtsWwFJ6HCumgK08"
+apiSecret ="BKkGwHt2BmEDMixFLBrLIwYyTOIuh6RjeMKhWBBBQwwyk8lfrD"
+accessToken ="1357400772527415297-3gpsEPuSKCy7uMvDI66pvKlgciWOIh"
+accessSecret ="qgOFFVopVZ8u4f0b9jplK4ucRZwEieqc3z4qR3EeyF0Wr"
 
 authen = tweepy.OAuthHandler(apiKey, apiSecret)
 authen.set_access_token(accessToken, accessSecret)
